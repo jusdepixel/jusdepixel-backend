@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\StoreDomainRequest;
-use App\Http\Requests\UpdateDomainRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Domain\StoreDomainRequest;
+use App\Http\Requests\Admin\Domain\UpdateDomainRequest;
 use App\Models\Domain;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -38,15 +39,15 @@ class DomainController extends Controller
      */
     public function show(Domain $domain)
     {
-        //
+        return Domain::query()->find($domain);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Domain $domain)
+    public function edit(Domain $slug)
     {
-        //
+        return Domain::query()->find($slug);
     }
 
     /**

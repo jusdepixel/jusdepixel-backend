@@ -17,8 +17,11 @@ class DomainFactory extends Factory
      */
     public function definition(): array
     {
+        $domain = fake()->domainWord();
+
         return [
-            'name' => fake()->domainWord()
+            'name' => ucfirst($domain),
+            'slug' => $domain,
         ];
     }
 }

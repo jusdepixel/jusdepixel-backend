@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('domains', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->string('slug')->unique();
+            $table->text('svg');
+            $table->boolean('secure')->default(false);
+            $table->boolean('default')->default(false);
         });
     }
 
