@@ -27,12 +27,12 @@ jobs:
       - name: Create Database
         run: |
           mkdir -p database
-          touch database/database.sqlite
+          touch database/jusdepixel-backend.sqlite
           chmod -R 777 database
       - name: Migrate
         run: php artisan migrate:fresh
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         env:
           DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
+          DB_DATABASE: database/jusdepixel-backend.sqlite
         run: php artisan test --env=testing
