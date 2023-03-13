@@ -13,11 +13,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         User::factory()->create([
-             'name' => 'Jusdepixel',
-             'email' => 'mandy@jusdepixel.fr',
-         ]);
-
          $this->call([
              DomainSeeder::class
          ]);
