@@ -3,21 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserCollection;
+use App\Http\Resources\UserResource;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
-    public function index(): Collection
+    public function index(): UserCollection
     {
-         return User::all();
+         return new UserCollection(
+             User::all()
+         );
     }
 
-    public function edit(User $user): User
+    public function edit(User $user): UserResource
     {
-        return User::query()->find($user)->first();
+        return new UserResource($user);
     }
 
     public function update(Request $request, User $user): Response
