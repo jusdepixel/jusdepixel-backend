@@ -10,4 +10,12 @@ class Domain extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $fillable = [
+        'name',
+        'slug',
+        'icon',
+        'secure',
+        'default',
+    ];
 }

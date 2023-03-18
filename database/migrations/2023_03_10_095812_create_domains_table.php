@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->text('svg');
+            $table->string('icon')->default('emoji-angry');
             $table->boolean('secure')->default(false);
             $table->boolean('default')->default(false);
         });

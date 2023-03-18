@@ -3,66 +3,56 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Domain\StoreDomainRequest;
-use App\Http\Requests\Admin\Domain\UpdateDomainRequest;
+use App\Http\Requests\StoreDomainRequest;
+use App\Http\Requests\UpdateDomainRequest;
+use App\Http\Resources\DomainCollection;
+use App\Http\Resources\DomainResource;
 use App\Models\Domain;
-use Illuminate\Database\Eloquent\Collection;
 
 class DomainController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(): Collection
+    public function index(): DomainCollection
     {
-        return Domain::all();
+        return new DomainCollection(
+            Domain::all()
+        );
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function show(Domain $domain): DomainResource
     {
-        //
+        return new DomainResource($domain);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function create(): DomainResource
+    {
+        return new DomainResource(
+            Domain::factory()->definition()
+        );
+    }
+
     public function store(StoreDomainRequest $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Domain $domain)
+    public function edit(Domain $domain): DomainResource
     {
-        return Domain::query()->find($domain);
+        return new DomainResource($domain);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Domain $slug)
+    public function update(UpdateDomainRequest $request, Domain $domain): bool
     {
-        return Domain::query()->find($slug);
+        return $domain->update($request->toArray());
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateDomainRequest $request, Domain $domain)
+    public function destroy(Domain $domain): array
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Domain $domain)
-    {
-        //
+        return $domain->deleteQuietly() ? [
+            'type' => 'success',
+            'message' => 'Domain has been quietly deleted',
+        ] : [
+            'type' => 'error',
+            'message' => 'An error occurred while deleting the domain',
+        ];
     }
 }

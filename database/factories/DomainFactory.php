@@ -22,6 +22,9 @@ class DomainFactory extends Factory
         return [
             'name' => ucfirst($domain),
             'slug' => $domain,
+            'icon' => 'emoji-angry',
+            'secure' => false,
+            'default' => false,
         ];
     }
 }
