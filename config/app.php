@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Facade;
 
 return [
 
+    'version' => env('APP_VERSION', '0.0.1'),
+    'author' => env('APP_AUTHOR', 'unknown'),
+    'repository' => env('APP_REPOSITORY', 'none'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -187,6 +191,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         /*
          * Application Service Providers...
