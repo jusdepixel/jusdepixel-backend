@@ -17,9 +17,9 @@ class DomainSeeder extends Seeder
             ->count(5)
             ->state(new Sequence(
                 [
-                    'name' => 'Admin',
-                    'slug' => 'admin',
-                    'icon' => 'fingerprint',
+                    'name' => 'Clients',
+                    'slug' => 'clients',
+                    'icon' => 'door-open',
                     'secure' => true,
                 ],
                 [
@@ -39,9 +39,9 @@ class DomainSeeder extends Seeder
                     'icon' => 'file-earmark-richtext',
                 ],
                 [
-                    'name' => 'Clients',
-                    'slug' => 'clients',
-                    'icon' => 'door-open',
+                    'name' => 'Admin',
+                    'slug' => 'admin',
+                    'icon' => 'fingerprint',
                     'secure' => true,
                 ],
             ))
