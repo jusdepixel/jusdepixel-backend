@@ -28,7 +28,7 @@ class DomainSeeder extends Seeder
                     'icon' => 'github',
                 ],
                 [
-                    'name' => 'Me !',
+                    'name' => 'About me !',
                     'slug' => 'me',
                     'icon' => 'bookmark-star',
                     'default' => true,
