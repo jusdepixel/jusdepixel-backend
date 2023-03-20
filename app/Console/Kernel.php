@@ -4,6 +4,9 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Jusdepixel\InstagramApiLaravel\Jobs\AutoRepostJob;
+use Jusdepixel\InstagramApiLaravel\Jobs\RefreshMediaJob;
+use Jusdepixel\InstagramApiLaravel\Jobs\RefreshTokenJob;
 
 class Kernel extends ConsoleKernel
 {
@@ -12,7 +15,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->job(new RefreshTokenJob)->daily();
+        $schedule->job(new RefreshMediaJob)->daily();
+        $schedule->job(new AutoRepostJob)->daily();
     }
 
     /**

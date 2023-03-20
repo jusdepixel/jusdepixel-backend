@@ -192,6 +192,7 @@ return [
          * Package Service Providers...
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Jusdepixel\InstagramApiLaravel\InstagramServiceProvider::class,
 
         /*
          * Application Service Providers...
