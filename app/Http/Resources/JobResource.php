@@ -18,7 +18,6 @@ class JobResource extends JsonResource
             'location' => $this->location,
             'duration' => $this->duration,
             'icon' => $this->icon,
-            'css' => $this->css,
         ];
     }
 }

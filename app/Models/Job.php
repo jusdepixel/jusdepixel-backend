@@ -16,6 +16,5 @@ class Job extends Model
         'location',
         'duration',
         'icon',
-        'css',
     ];
 }

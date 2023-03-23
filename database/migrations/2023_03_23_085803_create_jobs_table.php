@@ -17,7 +17,6 @@ return new class extends Migration
             $table->longText('location');
             $table->longText('duration');
             $table->string('icon');
-            $table->string('css');
         });
     }
 
