@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DomainController;
+use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Index\IndexController;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', IndexController::class);
 Route::get('/domains', [DomainController::class, 'index']);
+Route::get('/jobs', [JobController::class, 'index']);
 
 Route::middleware(['auth:sanctum'])
     ->get('/user', function (Request $request) {
