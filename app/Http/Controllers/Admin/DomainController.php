@@ -8,14 +8,19 @@ use App\Http\Requests\UpdateDomainRequest;
 use App\Http\Resources\DomainCollection;
 use App\Http\Resources\DomainResource;
 use App\Models\Domain;
+use Illuminate\Support\Facades\Cache;
 
 class DomainController extends Controller
 {
     public function index(): DomainCollection
     {
-        return new DomainCollection(
-            Domain::all()
-        );
+        if (!Cache::has('domains')) {
+            Cache::add('domains', new DomainCollection(
+                Domain::all()
+            ));
+        }
+
+        return Cache::get('domains');
     }
 
     public function show(Domain $domain): DomainResource
